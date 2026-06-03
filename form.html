@@ -1,0 +1,162 @@
+<div class="row vdivide">
+    <div class="col-md-2">
+        {{adminltetags.useTag('fields',
+            [
+                'component'                                 : component,
+                'componentName'                             : componentName,
+                'componentId'                               : componentId,
+                'sectionId'                                 : sectionId,
+                'fieldId'                                   : 'form-fields',
+                'fieldLabel'                                : 'Form Fields',
+                'fieldType'                                 : 'jstree',
+                'fieldHelp'                                 : true,
+                'fieldHelpTooltipContent'                   : 'Form Fields',
+                'fieldRequired'                             : false,
+                'fieldBazScan'                              : true,
+                'fieldJstreeSearch'                         : true,
+                'fieldBazPostOnCreate'                      : false,
+                'fieldBazPostOnUpdate'                      : false,
+                'fieldJstreeDataSrcArr'                     : [],
+                'fieldJstreeAdd'                            : false,
+                'fieldJstreeEdit'                           : false,
+                'fieldJstreeExpand'                         : true,
+                'fieldJstreeCollapse'                       : true,
+                'fieldJstreeFirstOpen'                      : true,
+                'fieldJstreeAllOpen'                        : false,
+                'fieldJstreeToggleAllChildren'              : false,
+                'fieldJstreeIncludeRootInPath'              : false,
+                'fieldJstreeSelectEndNodeOnly'              : false,
+                'fieldJstreeShowDots'                       : false,
+                'fieldJstreeDoubleClickToggle'              : true,
+                'fieldJstreeMultiple'                       : false,
+                'fieldJstreeSearchCaseSensitive'            : false,
+                'fieldJstreeSearchShowOnlyMatches'          : false,
+                'fieldJstreeSearchShowOnlyMatchesChildren'  : false,
+                'fieldJstreeHideJstreeIcons'                : false
+            ]
+        )}}
+    </div>
+    <div class="col-md-10">
+        <form autocomplete="off" data-validateon="section" id="{{componentId}}-{{sectionId}}-form">
+            <fieldset id="{{componentId}}-{{sectionId}}-fieldset">
+                {{adminltetags.useTag('tabs',
+                    [
+                        'component'                     : component,
+                        'componentName'                 : componentName,
+                        'componentId'                   : componentId,
+                        'sectionId'                     : 'main',
+                        'tabsId'                        : 'tabs',
+                        'tabsStyle'                     : 'card-outline-tabs',
+                        'tabsData'                      :
+                            [
+                                'info'   :
+                                [
+                                    'tabTitle'          : 'Info',
+                                    'tabInclude'        : 'employees/form/info'
+                                ],
+                                'contactdetails'   :
+                                [
+                                    'tabTitle'          : 'Contact Details',
+                                    'tabInclude'        : 'employees/form/contactdetails'
+                                ],
+                                'addresses'   :
+                                [
+                                    'tabTitle'          : 'Addresses',
+                                    'tabInclude'        : 'employees/form/addresses'
+                                ],
+                                'licenses'   :
+                                [
+                                    'tabTitle'          : 'Licenses',
+                                    'tabInclude'        : 'employees/form/licenses'
+                                ]
+                            ]
+                    ]
+                )}}
+            </fieldset>
+        </form>
+    </div>
+</div>
+<script>
+/*global paginatedPNotify BazProgress BazContentFields BazHelpers BazContentLoader Pace BazCore dataCollection Swal */
+var dataCollectionComponent, dataCollectionSection, dataCollectionSectionForm;
+
+if (!window['dataCollection']['{{componentId}}']) {
+    dataCollectionComponent =
+        window['dataCollection']['{{componentId}}'] = { };
+} else {
+    dataCollectionComponent =
+        window['dataCollection']['{{componentId}}'];
+}
+if (!dataCollectionComponent['{{componentId}}-{{sectionId}}']) {
+    dataCollectionSection =
+        dataCollectionComponent['{{componentId}}-{{sectionId}}'] = { };
+} else {
+    dataCollectionSection =
+        dataCollectionComponent['{{componentId}}-{{sectionId}}'];
+}
+if (!dataCollectionSection['{{componentId}}-{{sectionId}}-form']) {
+    dataCollectionSectionForm =
+        dataCollectionSection['{{componentId}}-{{sectionId}}-form'] = { };
+} else {
+    dataCollectionSectionForm =
+        dataCollectionSection['{{componentId}}-{{sectionId}}-form'];
+}
+
+if (!dataCollectionSectionForm['vars']) {
+    dataCollectionSectionForm['vars'] = { };
+}
+if (!dataCollectionSectionForm['funcs']) {
+    dataCollectionSectionForm['funcs'] = { };
+}
+
+dataCollectionSection =
+    $.extend(dataCollectionSection, {
+        '{{componentId}}-{{sectionId}}-id'                              : { },
+        '{{componentId}}-{{sectionId}}-organisation_id'                 : {
+            placeholder: "SELECT ORGANISATION"
+        },
+        '{{componentId}}-{{sectionId}}-account_id'                      : {
+            placeholder: "SEARCH AND SELECT ACCOUNT"
+        },
+        '{{componentId}}-{{sectionId}}-employee_id'                     : { },
+        '{{componentId}}-{{sectionId}}-designation'                     : {
+            placeholder: "SEARCH/CREATE DESIGNATION"
+        },
+        '{{componentId}}-{{sectionId}}-manager_id'                      : {
+            placeholder: "SELECT MANAGER"
+        },
+        '{{componentId}}-{{sectionId}}-first_name'                      : { },
+        '{{componentId}}-{{sectionId}}-last_name'                       : { },
+        '{{componentId}}-{{sectionId}}-drivers_license'                 : { },
+        '{{componentId}}-{{sectionId}}-drivers_license_valid_till'      : {
+            altFormat           : "d-m-Y",
+            allowInput          : true,
+            static              : true,
+            minDate             : "today"
+        },
+        '{{componentId}}-{{sectionId}}-hazardous_license'               : { },
+        '{{componentId}}-{{sectionId}}-hazardous_license_valid_till'    : {
+            altFormat           : "d-m-Y",
+            allowInput          : true,
+            static              : true,
+            minDate             : "today"
+        },
+        '{{componentId}}-{{sectionId}}-adhar_card'                      : { },
+        '{{componentId}}-{{sectionId}}-pan_card'                        : { },
+        '{{componentId}}-{{sectionId}}-form' : {
+            rules: {
+                '{{componentId}}-{{sectionId}}-organisation_id'       : 'required',
+                '{{componentId}}-{{sectionId}}-first_name'            : 'required',
+                '{{componentId}}-{{sectionId}}-last_name'             : 'required',
+            },
+            messages: {
+                '{{componentId}}-{{sectionId}}-organisation_id'       : 'Please select organisation',
+                '{{componentId}}-{{sectionId}}-first_name'            : 'Please enter first name',
+                '{{componentId}}-{{sectionId}}-last_name'             : 'Please enter last name',
+            },
+            onSubmit: function() {
+                return true;
+            }
+        }
+    });
+</script>

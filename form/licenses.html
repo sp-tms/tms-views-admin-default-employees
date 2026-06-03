@@ -1,0 +1,150 @@
+{% if employee['id'] is defined %}
+    {% set employeeDriversLicense = employee['drivers_license'] %}
+    {% set employeeDriversLicenseValidTill = employee['drivers_license_valid_till'] %}
+    {% set employeeHazardousLicense = employee['hazardous_license'] %}
+    {% set employeeHazardousLicenseValidTill = employee['hazardous_license_valid_till'] %}
+    {% set employeeAdharCard = employee['adhar_card'] %}
+    {% set employeePanCard = employee['pan_card'] %}
+{% else %}
+    {% set employeeDriversLicense = '' %}
+    {% set employeeDriversLicenseValidTill = '' %}
+    {% set employeeHazardousLicense = '' %}
+    {% set employeeHazardousLicenseValidTill = '' %}
+    {% set employeeAdharCard = '' %}
+    {% set employeePanCard = '' %}
+{% endif %}
+<div class="row">
+    <div class="col">
+        {{adminltetags.useTag('fields',
+            [
+                'component'                                 : component,
+                'componentName'                             : componentName,
+                'componentId'                               : componentId,
+                'sectionId'                                 : sectionId,
+                'fieldId'                                   : 'drivers_license',
+                'fieldLabel'                                : 'Drivers License',
+                'fieldType'                                 : 'input',
+                'fieldHelp'                                 : true,
+                'fieldHelpTooltipContent'                   : 'Drivers License',
+                'fieldRequired'                             : false,
+                'fieldBazJstreeSearch'                      : true,
+                'fieldBazScan'                              : true,
+                'fieldDataInputMaxLength'                   : 50,
+                'fieldBazPostOnCreate'                      : true,
+                'fieldBazPostOnUpdate'                      : true,
+                'fieldValue'                                : employeeDriversLicense
+            ]
+        )}}
+    </div>
+    <div class="col">
+        {{adminltetags.useTag('fields',
+            [
+                'component'                                 : component,
+                'componentName'                             : componentName,
+                'componentId'                               : componentId,
+                'sectionId'                                 : sectionId,
+                'fieldId'                                   : 'drivers_license_valid_till',
+                'fieldLabel'                                : 'Drivers License Valid Till',
+                'fieldType'                                 : 'input',
+                'fieldType'                                 : 'flatpickr',
+                'fieldHelp'                                 : true,
+                'fieldHelpTooltipContent'                   : 'Drivers License Valid Till',
+                'fieldRequired'                             : false,
+                'fieldBazScan'                              : true,
+                'fieldBazJstreeSearch'                      : true,
+                'fieldBazPostOnCreate'                      : true,
+                'fieldBazPostOnUpdate'                      : true,
+                'fieldValue'                                : employeeDriversLicenseValidTill
+            ]
+        )}}
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        {{adminltetags.useTag('fields',
+            [
+                'component'                                 : component,
+                'componentName'                             : componentName,
+                'componentId'                               : componentId,
+                'sectionId'                                 : sectionId,
+                'fieldId'                                   : 'hazardous_license',
+                'fieldLabel'                                : 'Hazardous License',
+                'fieldType'                                 : 'input',
+                'fieldHelp'                                 : true,
+                'fieldHelpTooltipContent'                   : 'Hazardous License',
+                'fieldRequired'                             : false,
+                'fieldBazJstreeSearch'                      : true,
+                'fieldBazScan'                              : true,
+                'fieldDataInputMaxLength'                   : 50,
+                'fieldBazPostOnCreate'                      : true,
+                'fieldBazPostOnUpdate'                      : true,
+                'fieldValue'                                : employeeHazardousLicense
+            ]
+        )}}
+    </div>
+    <div class="col">
+        {{adminltetags.useTag('fields',
+            [
+                'component'                                 : component,
+                'componentName'                             : componentName,
+                'componentId'                               : componentId,
+                'sectionId'                                 : sectionId,
+                'fieldId'                                   : 'hazardous_license_valid_till',
+                'fieldLabel'                                : 'Hazardous License Valid Till',
+                'fieldType'                                 : 'flatpickr',
+                'fieldHelp'                                 : true,
+                'fieldHelpTooltipContent'                   : 'Hazardous License Valid Till',
+                'fieldRequired'                             : false,
+                'fieldBazScan'                              : true,
+                'fieldBazJstreeSearch'                      : true,
+                'fieldBazPostOnCreate'                      : true,
+                'fieldBazPostOnUpdate'                      : true,
+                'fieldValue'                                : employeeHazardousLicenseValidTill
+            ]
+        )}}
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        {{adminltetags.useTag('fields',
+            [
+                'component'                                 : component,
+                'componentName'                             : componentName,
+                'componentId'                               : componentId,
+                'sectionId'                                 : sectionId,
+                'fieldId'                                   : 'adhar_card',
+                'fieldLabel'                                : 'Adhar Card',
+                'fieldType'                                 : 'input',
+                'fieldHelp'                                 : true,
+                'fieldHelpTooltipContent'                   : 'Adhar Card',
+                'fieldRequired'                             : false,
+                'fieldBazScan'                              : true,
+                'fieldDataInputMaxLength'                   : 50,
+                'fieldBazPostOnCreate'                      : true,
+                'fieldBazPostOnUpdate'                      : true,
+                'fieldValue'                                : employeeAdharCard
+            ]
+        )}}
+    </div>
+    <div class="col">
+        {{adminltetags.useTag('fields',
+            [
+                'component'                                 : component,
+                'componentName'                             : componentName,
+                'componentId'                               : componentId,
+                'sectionId'                                 : sectionId,
+                'fieldId'                                   : 'pan_card',
+                'fieldLabel'                                : 'Pan Card',
+                'fieldType'                                 : 'input',
+                'fieldHelp'                                 : true,
+                'fieldHelpTooltipContent'                   : 'Pan Card',
+                'fieldRequired'                             : false,
+                'fieldBazScan'                              : true,
+                'fieldDataInputMaxLength'                   : 20,
+                'fieldBazPostOnCreate'                      : true,
+                'fieldBazPostOnUpdate'                      : true,
+                'fieldValue'                                : employeePanCard
+            ]
+        )}}
+    </div>
+</div>

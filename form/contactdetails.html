@@ -1,0 +1,31 @@
+{% if employee['id'] is defined %}
+    {% set employeeContact = employee['contact'] %}
+{% else %}
+    {% set employeeContact = [] %}
+{% endif %}
+<div class="row">
+    <div class="col">
+        {{adminltetags.useTag('contacts',
+            [
+                'component'                                   : component,
+                'componentName'                               : componentName,
+                'componentId'                                 : componentId,
+                'sectionId'                                   : sectionId,
+                'contactFieldType'                            : 'single',
+                'includeName'                                 : false,
+                'includeEmail'                                : false,
+                'emailFieldDisabled'                          : true,
+                'emailFieldBazPostOnCreate'                   : false,
+                'includeOther'                                : false,
+                'includeNotes'                                : true,
+                'contacts'                                    : employeeContact,
+                'firstNameFieldBazPostOnCreate'               : true,
+                'lastNameFieldBazPostOnCreate'                : true,
+                'contactPhoneFieldBazPostOnCreate'            : true,
+                'contactPhoneExtFieldBazPostOnCreate'         : true,
+                'contactMobileFieldBazPostOnCreate'           : true,
+                'contactNotesFieldBazPostOnCreate'            : true
+            ]
+        )}}
+    </div>
+</div>
