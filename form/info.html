@@ -1,6 +1,6 @@
 <!-- htmlhint tag-pair:false -->
 {% if employee['id'] is defined %}
-    {% set employeeId = employee['id'] %}
+    {% set id = employee['id'] %}
     {% set employeeOrganisation = employee['organisation_id'] %}
     {% set employeeAccountId = employee['account_id'] %}
     {% set employeeId = employee['employee_id'] %}
@@ -9,7 +9,7 @@
     {% set employeeFirstName = employee['contact']['first_name'] %}
     {% set employeeLastName = employee['contact']['last_name'] %}
 {% else %}
-    {% set employeeId = '' %}
+    {% set id = '' %}
     {% set employeeOrganisation = '' %}
     {% set employeeAccountId = '' %}
     {% set employeeId = '' %}
@@ -37,7 +37,7 @@
                 'fieldBazPostOnUpdate'           : true,
                 'fieldHidden'                    : true,
                 'fieldDisabled'                  : true,
-                'fieldValue'                     : employeeAccountId
+                'fieldValue'                     : id
             ]
         )}}
     </div>
