@@ -1,6 +1,6 @@
 {% if employee['id'] is defined %}
     {% set employeeId = employee['id'] %}
-    {% set title = 'Employee (' ~ employee['name'] ~ ')' %}
+    {% set title = 'Employee (' ~ employee['contact']['full_name'] ~ ')' %}
 {% else %}
     {% set employeeId = '' %}
     {% set title = 'New Employee' %}
@@ -20,6 +20,7 @@
         'cardTitle'                     : title,
         'cardAdditionalClass'           : 'rounded-0',
         'cardBodyInclude'               : 'employees/form',
+        'cardShowTools'                 : ['activityLogs'],
         'formButtons'                   :
         [
             'updateButtonId'                : employeeId,

@@ -45,12 +45,13 @@
 <div class="row vdivide">
     <div class="col-md-3 col-sm-12">
         {% set employeePortrait = '' %}
-        {% if employee['contact']['portrait'] is defined and employee['contact']['portrait'] !== '' %}
+        {% if employee['contact']['portrait'] is defined and employee['contact']['portrait'] != '' %}
             {% set portraitLink = links.url('system/storages/q/uuid/' ~ employee['contact']['portrait'] ~ '/w/200') %}
+            {% set employeePortrait = employee['contact']['portrait'] %}
         {% else %}
             {% set portraitLink = '' %}
         {% endif %}
-        {% if employee['contact']['initials_avatar']['large'] is defined and employee['contact']['initials_avatar']['large'] !== '' %}
+        {% if employee['contact']['initials_avatar']['large'] is defined and employee['contact']['initials_avatar']['large'] != '' %}
             {% set initialsAvatar = employee['contact']['initials_avatar'] %}
         {% else %}
             {% set initialsAvatar = '' %}
@@ -121,9 +122,9 @@
                         'fieldBazJstreeSearch'                  : true,
                         'fieldBazPostOnCreate'                  : false,
                         'fieldBazPostOnUpdate'                  : true,
-                        'fieldDataSelect2Options'               : [],
+                        'fieldDataSelect2Options'               : account,
                         'fieldDataSelect2OptionsKey'            : 'id',
-                        'fieldDataSelect2OptionsValue'          : 'name',
+                        'fieldDataSelect2OptionsValue'          : 'email',
                         'fieldDataSelect2OptionsArray'          : true,
                         'fieldDataSelect2OptionsSelected'       : employeeAccountId
                     ]
@@ -200,7 +201,7 @@
                         'fieldBazPostOnUpdate'                  : true,
                         'fieldDataSelect2Options'               : employees,
                         'fieldDataSelect2OptionsKey'            : 'id',
-                        'fieldDataSelect2OptionsValue'          : 'name',
+                        'fieldDataSelect2OptionsValue'          : 'full_name',
                         'fieldDataSelect2OptionsArray'          : true,
                         'fieldDataSelect2OptionsSelected'       : employeeManagerId
                     ]
