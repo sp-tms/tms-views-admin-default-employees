@@ -4,6 +4,7 @@
     {% set employeeOrganisation = employee['organisation_id'] %}
     {% set employeeAccountId = employee['account_id'] %}
     {% set employeeId = employee['employee_id'] %}
+    {% set employeeStatus = employee['status'] %}
     {% set employeeDesignation = employee['designation'] %}
     {% set employeeManagerId = employee['manager_id'] %}
     {% set employeeFirstName = employee['contact']['first_name'] %}
@@ -13,6 +14,7 @@
     {% set employeeOrganisation = '' %}
     {% set employeeAccountId = '' %}
     {% set employeeId = '' %}
+    {% set employeeStatus = '' %}
     {% set employeeDesignation = '' %}
     {% set employeeManagerId = '' %}
     {% set employeeFirstName = '' %}
@@ -151,6 +153,31 @@
                         'fieldDataInputMinLength'        : 1,
                         'fieldDataInputMaxLength'        : 50,
                         'fieldValue'                     : employeeId
+                    ]
+                )}}
+            </div>
+            <div class="col">
+                {{adminltetags.useTag('fields',
+                    [
+                        'component'                             : component,
+                        'componentName'                         : componentName,
+                        'componentId'                           : componentId,
+                        'sectionId'                             : sectionId,
+                        'fieldId'                               : 'status',
+                        'fieldLabel'                            : 'Status',
+                        'fieldType'                             : 'select2',
+                        'fieldHelp'                             : true,
+                        'fieldHelpTooltipContent'               : "Select status",
+                        'fieldRequired'                         : true,
+                        'fieldBazScan'                          : true,
+                        'fieldBazJstreeSearch'                  : true,
+                        'fieldBazPostOnCreate'                  : true,
+                        'fieldBazPostOnUpdate'                  : true,
+                        'fieldDataSelect2Options'               : employeeStatuses,
+                        'fieldDataSelect2OptionsKey'            : 'id',
+                        'fieldDataSelect2OptionsValue'          : 'name',
+                        'fieldDataSelect2OptionsArray'          : true,
+                        'fieldDataSelect2OptionsSelected'       : employeeStatus
                     ]
                 )}}
             </div>

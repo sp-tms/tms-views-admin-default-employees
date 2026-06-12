@@ -119,6 +119,9 @@ dataCollectionSection =
             placeholder: "SELECT ACCOUNT"
         },
         '{{componentId}}-{{sectionId}}-employee_id'                     : { },
+        '{{componentId}}-{{sectionId}}-status'                          : {
+            placeholder: "SELECT STATUS"
+        },
         '{{componentId}}-{{sectionId}}-designation'                     : {
             placeholder: "SEARCH/CREATE DESIGNATION"
         },
@@ -148,11 +151,13 @@ dataCollectionSection =
                 '{{componentId}}-{{sectionId}}-organisation_id'       : 'required',
                 '{{componentId}}-{{sectionId}}-first_name'            : 'required',
                 '{{componentId}}-{{sectionId}}-last_name'             : 'required',
+                '{{componentId}}-{{sectionId}}-status'                : 'required',
             },
             messages: {
                 '{{componentId}}-{{sectionId}}-organisation_id'       : 'Please select organisation',
                 '{{componentId}}-{{sectionId}}-first_name'            : 'Please enter first name',
                 '{{componentId}}-{{sectionId}}-last_name'             : 'Please enter last name',
+                '{{componentId}}-{{sectionId}}-status'                : 'Please select status',
             },
             onSubmit: function() {
                 return true;
